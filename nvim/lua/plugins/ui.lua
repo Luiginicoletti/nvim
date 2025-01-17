@@ -89,22 +89,12 @@ return {
 		},
 	},
 
-	-- statusline
-	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		opts = {
-			options = {
-				-- globalstatus = false,
-				theme = "solarized_dark",
-			},
-		},
-	},
-
 	-- filename
 	{
 		"b0o/incline.nvim",
-		dependencies = { "craftzdog/solarized-osaka.nvim" },
+		dependencies = {
+			"craftzdog/solarized-osaka.nvim",
+		},
 		event = "BufReadPre",
 		priority = 1200,
 		config = function()
@@ -133,6 +123,25 @@ return {
 		end,
 	},
 
+	-- statusline
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = function(_, opts)
+			local LazyVim = require("lazyvim.util")
+			opts.sections.lualine_c[4] = {
+				LazyVim.lualine.pretty_path({
+					length = 0,
+					relative = "cwd",
+					modified_hl = "MatchParen",
+					directory_hl = "",
+					filename_hl = "Bold",
+					modified_sign = "",
+					readonly_icon = " 󰌾 ",
+				}),
+			}
+		end,
+	},
+
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
@@ -151,17 +160,17 @@ return {
 		event = "VimEnter",
 		opts = function(_, opts)
 			local logo = [[
-███╗   ██╗ ██████╗██╗     ████████╗████████╗
-████╗  ██║██╔════╝██║     ╚══██╔══╝╚══██╔══╝
-██╔██╗ ██║██║     ██║        ██║      ██║   
-██║╚██╗██║██║     ██║        ██║      ██║   
-██║ ╚████║╚██████╗███████╗   ██║      ██║   
-╚═╝  ╚═══╝ ╚═════╝╚══════╝   ╚═╝      ╚═╝   
-                                            
+███╗   ██╗ ██████╗██╗  ████████╗████████╗
+████╗  ██║██╔════╝██║  ╚══██╔══╝╚══██╔══╝
+██╔██╗ ██║██║     ██║     ██║      ██║   
+██║╚██╗██║██║     ██║     ██║      ██║   
+██║ ╚████║╚██████╗███████╗██║      ██║   
+╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝      ╚═╝   
 ]]
-
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
+			opts.config = opts.config or {}
 			opts.config.header = vim.split(logo, "\n")
+			return opts
 		end,
 	},
 }

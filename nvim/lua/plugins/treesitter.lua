@@ -1,11 +1,6 @@
 return {
 	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 
-	require("nvim-treesitter.configs").setup({
-		autotag = {
-			enable = true,
-		},
-	}),
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -14,13 +9,17 @@ return {
 				"cmake",
 				"cpp",
 				"css",
+				-- "fish",
 				"gitignore",
 				"go",
 				"graphql",
 				"http",
+				"java",
+				"php",
 				"rust",
 				"scss",
 				"sql",
+				"svelte",
 			},
 
 			-- matchup = {
