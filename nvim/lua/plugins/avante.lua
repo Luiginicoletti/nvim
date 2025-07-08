@@ -2,9 +2,10 @@ return {
 
 	{
 		"yetone/avante.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		lazy = false,
-		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+		version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
 			provider = "openai",
 			auto_suggestions_provider = "openai",
@@ -17,10 +18,11 @@ return {
 				-- model = "qwen2.5-coder-14b-intruct",
 				-- model = "deepseek-coder-v2-lite-instruct",
 				api_key = "OPENAI_API_KEY",
-				temperature = 0.95,
+				temperature = 0.2,
 				max_tokens = 4096,
 				headers = {}, -- headers vazios para evitar validações desnecessárias
 				["local"] = true,
+				disableTools = true,
 			},
 			behaviour = {
 				auto_suggestions = true,
