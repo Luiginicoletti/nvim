@@ -40,8 +40,6 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
 keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
@@ -58,8 +56,12 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<leader>dj", function()
 	vim.diagnostic.goto_next()
+end, opts)
+
+keymap.set("n", "<leader>dk", function()
+	vim.diagnostic.goto_prev()
 end, opts)
 
 keymap.set("n", "<leader>r", function()
