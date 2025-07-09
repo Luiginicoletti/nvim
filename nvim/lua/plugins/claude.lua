@@ -7,10 +7,13 @@ return {
 
     -- Custom key mappings managed here (internal plugin mappings are disabled below)
     keys = {
-      { "<leader>ac", "<cmd>ClaudeCode<CR>",          desc = "Toggle Claude Code",        mode = { "n" } },
-      { "<C-,>",     "<cmd>ClaudeCode<CR>",          desc = "Toggle Claude Code",        mode = { "n", "t" } },
-      { "<leader>cC", "<cmd>ClaudeCodeContinue<CR>",  desc = "Claude Code – Continue",   mode = { "n" } },
-      { "<leader>cV", "<cmd>ClaudeCodeVerbose<CR>",   desc = "Claude Code – Verbose",    mode = { "n" } },
+      -- Reliable toggles for Claude Code
+      { "<leader>ac", "<cmd>ClaudeCode<CR>",        desc = "Toggle Claude Code",       mode = { "n" } },
+      { "<C-,>",     "<cmd>ClaudeCode<CR>",        desc = "Toggle Claude Code",       mode = { "n", "t" } },
+
+      -- Variant commands (Normal mode only)
+      { "<leader>aC", "<cmd>ClaudeCodeContinue<CR>", desc = "Claude Code – Continue",  mode = { "n" } },
+      { "<leader>aV", "<cmd>ClaudeCodeVerbose<CR>",  desc = "Claude Code – Verbose",   mode = { "n" } },
     },
 
     -- Full set of options with defaults so you can tweak them freely
